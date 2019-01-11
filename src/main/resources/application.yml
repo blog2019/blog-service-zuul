@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 5555
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      url: http://localhost:9000/
