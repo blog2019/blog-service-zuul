@@ -2,9 +2,26 @@ spring:
   application:
     name: api-gateway
 server:
-  port: 5555
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
 zuul:
   routes:
-    auth:
-      path: /auth/**
-      url: http://localhost:9000/
+#    auth:
+#      path: /auth/**
+#      url: http://localhost:9000/
+    blog:
+      path: /blog/**
+      url: http://localhost:8762/
+security:
+  oauth2:
+    client:
+      clientId: f7b5d7f6c4d3b86071f8
+      clientSecret: dac57c91f847fc9c70f5ac1f2f550e9cf1ae8065
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+    resource:
+      userInfoUri: https://api.github.com/user
+      preferTokenInfo: false
